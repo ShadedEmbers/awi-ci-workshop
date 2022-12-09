@@ -1,0 +1,19 @@
+service: aws-ci-cd
+frameworkVersion: '3'
+
+provider:
+  aws:
+  runtime: nodejs16.x
+  region: eu-west-1
+
+plugins:
+  - serverless-offline
+  - serverless-esbuild
+
+functions:
+  helloWorld:
+    handler: handlers/helloWorld/handler.handle
+    events:
+      - http:
+          path: /
+          method: GET
